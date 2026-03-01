@@ -55,7 +55,32 @@ def housing2(i):
 def housing3(i):
     temp = 887*(math.pow(math.e, (0.0000067*i)))+792
     costs.append(temp)
-    bare_costs.append_temp
+    bare_costs.append(temp)
+
+def income_tax(i):
+    total=0
+    if i>=626351:
+        total+=0.37*626351
+        i-=626351
+    if i>=250526:
+        total+=0.35*250526
+        i-=250526
+    if i>=197301:
+        total+=0.32*197301
+        i-=197301
+    if i>=103351:
+        total+=0.24*103351
+        i-=103351
+    if i>=48476:
+        total+=0.22*48476
+        i-=48476
+    if i>=11925:
+        total+=0.12*11925
+        i-=11925
+    if i>=0:
+        total+=0.1*i
+    costs.append(total)
+    bare_costs.append(total)
     
 food_cost(income)
 utility_cost(income)
@@ -63,7 +88,9 @@ clothing_cost(income)
 entertainment_cost(income)
 transportation_cost(income)
 healthcare_cost(age)
-childcare_cost(income)
+income_tax(income)
+if age<=50 and age>=36:
+    childcare_cost(income)
 if age<=36 and age>=18:
     education_cost(income)
 if income<106500 or age<=36 and age>=18:
